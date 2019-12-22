@@ -1,0 +1,4 @@
+rootProject.name = 'secret-santa'
+include 'wrapper'
+include 'checker'
+
