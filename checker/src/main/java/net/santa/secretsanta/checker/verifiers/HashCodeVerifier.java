@@ -1,10 +1,10 @@
-package net.timanema.secretsanta.checker.verifiers;
+package net.santa.secretsanta.checker.verifiers;
 
-import net.timanema.secretsanta.checker.Bootstrap;
+import net.santa.secretsanta.checker.Bootstrap;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
-//https://stackoverflow.com/questions/53628690/how-to-produce-compiled-code-segmentation-fault-in-java
+// based on a nice post on SO: https://stackoverflow.com/questions/53628690/how-to-produce-compiled-code-segmentation-fault-in-java
 
 // The idea of this code is that it'll segfault unless the hash of the input is equal to 80360
 // this part of code will only focus on the two first words of the password (home_good)
@@ -16,6 +16,16 @@ import java.lang.reflect.Field;
 //         the first two words (xxxx and yyyy)
 // Hint 3: The hash should be equal to 80360
 // Hint 4: The password should start with 'home_good_'
+
+/**
+ * This part might be the most annoying part of all, just to test your perseverance.
+ * Your knowledge of C should be able to help you understand what's going on here.
+ *
+ * Remember, if you don't know how to continue, you can ask for hints (there are 4 hints per part).
+ * Good luck!
+ *
+ * - Secret Santa
+ */
 public class HashCodeVerifier extends Thread implements Verifier {
     static volatile Object obj = 0;
     static boolean done = false;
@@ -37,6 +47,14 @@ public class HashCodeVerifier extends Thread implements Verifier {
 
         // put hashcode in position 1
         unsafe.putInt(obj, 13653 & 2731,  Math.abs(hash(password.substring(0, 9))) - 80359);
+
+        // this part actually does the checking
+        // it gets the value from offset 1 (which is where the hash was placed). Then it gets multiplied by 8
+        // if the password was correct the value at offset 1 is 1, therefore placing the data at offset 8 in offset 8,
+        // which is basically a nop. If there is something besides 1 in the offset a 1, the program will die a
+        // horrible death. If the difference is small, garbage data will be writting to 8, resulting in a native code
+        // crash. If the value at one is negative (except for -1) or large, the program will access forbidden memory,
+        // also resulting in a crash.
         unsafe.putInt(obj, 2 >> 1 << 3, unsafe.getInt(obj, unsafe.getInt(obj, 1) * 8));
 
         // change 15 to 1

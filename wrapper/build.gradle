@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'net.timanema'
+group 'net.santa'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -16,7 +16,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'net.timanema.secretsanta.wrapper.Bootstrap'
+        attributes 'Main-Class': 'net.santa.secretsanta.wrapper.Bootstrap'
     }
 }
 

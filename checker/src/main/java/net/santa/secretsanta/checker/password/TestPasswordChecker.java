@@ -1,4 +1,4 @@
-package net.timanema.secretsanta.checker.password;
+package net.santa.secretsanta.checker.password;
 
 public class TestPasswordChecker implements PasswordChecker {
     @Override

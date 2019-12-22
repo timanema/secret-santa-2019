@@ -1,4 +1,6 @@
-package net.timanema.secretsanta.checker.verifiers;
+package net.santa.secretsanta.checker.verifiers;
+
+import net.santa.secretsanta.checker.Bootstrap;
 
 import java.lang.reflect.Field;
 
@@ -11,6 +13,15 @@ import java.lang.reflect.Field;
 // Hint 3: The password consists of 4 words, in the following format 'xxxx_yyyy_zzzzz_ttt'. This part only tests
 //         the last word (ttt)
 // Hint 4: The password should end with '_bad'
+
+/**
+ * Good to see you've overcome the first hurdle!
+ * This one should be a lot easier than the previous one, and should give you some time to breath.
+ *
+ * I suspect you won't need them, but there are four hints available for this part.
+ *
+ * - Secret Santa
+ */
 public class EasyReflectionVerifier implements Verifier {
     public class CharToNum {
         private volatile int a = 812;
@@ -56,17 +67,9 @@ public class EasyReflectionVerifier implements Verifier {
             sum *= (i / 15);
             i *= c * 88999;
 
-            System.out.println(c + " -> " + (char) (c + 6));
-            System.out.println("i: " + i);
-            System.out.println("sum: " + sum);
-
-            //if (i < 0) Bootstrap.segfault();
+            if (i < 0) Bootstrap.segfault();
         }
 
         return i == 737725488 && sum == 1273637970;
-    }
-
-    public static void main(String... args) throws Exception {
-        System.out.println(new EasyReflectionVerifier().verify("home_good_train_bad"));
     }
 }

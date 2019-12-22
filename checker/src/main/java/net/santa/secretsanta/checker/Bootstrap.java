@@ -1,14 +1,20 @@
-package net.timanema.secretsanta.checker;
+package net.santa.secretsanta.checker;
 
-import net.timanema.secretsanta.checker.password.HighTechChecker;
+import net.santa.secretsanta.checker.password.HighTechChecker;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Constructor;
 import java.util.Optional;
 
+/**
+ * This is where it all starts. You can look around here, but there isn't much to see.
+ *
+ * - Secret Santa
+ */
 public class Bootstrap {
+    //TODO: Remove all non-javadoc comments for the final version
     public static void main(String... args) throws Exception {
-        String password = Optional.ofNullable(System.getProperty("pass")).orElse("home_good");
+        String password = System.getProperty("pass");
         int part = Integer.parseInt(Optional.ofNullable(System.getProperty("part")).orElse("1"));
 
         System.exit(new HighTechChecker().checkPassword(password, part) ? 0 : 1);
