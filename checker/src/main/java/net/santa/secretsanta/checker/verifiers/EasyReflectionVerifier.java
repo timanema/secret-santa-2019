@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
 //         with an offset of 6. This gives you the range of the possible chars. It then does some magic and
 //         compares the values retrieved with two constants.
 // Hint 2: If the value of i is negative at any point, the verifies crashes. Which means that the password is limited to
-//         characters which resolve to low value non-negative ints. This should remove quite a few options.
+//         characters which resolve to low value ints. This should remove quite a few options.
 // Hint 3: The password consists of 4 words, in the following format 'xxxx_yyyy_zzzzz_ttt'. This part only tests
 //         the last word (ttt)
 // Hint 4: The password should end with '_bad'

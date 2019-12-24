@@ -22,3 +22,18 @@ and the final verifier has a single hint (you'll find out why).
 Good luck,
 
 Secret Santa
+
+
+### Running the checker
+#### Advised
+The easiest way to run the checker is by using docker:
+* Pull the image (finitum/secret-santa:dany)
+* Run the container with an interactive terminal (docker run -i -t ...)
+
+#### Alternative
+If you don't have docker, or cannot use it you can also run the jars directly. 
+Make sure the jars are in the same folder, or it will not work. You need to run the ss-wrapper.jar  
+Warning: Due to the way the password checker works, it might break on different versions 
+of Java (that's why docker is advised).
+
+The jars can also be found in the .zip, in /jars/

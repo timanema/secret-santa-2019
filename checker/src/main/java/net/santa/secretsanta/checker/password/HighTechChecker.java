@@ -1,5 +1,6 @@
 package net.santa.secretsanta.checker.password;
 
+import net.santa.secretsanta.checker.verifiers.ByteCodeVerifier;
 import net.santa.secretsanta.checker.verifiers.EasyReflectionVerifier;
 import net.santa.secretsanta.checker.verifiers.FinalVerifier;
 import net.santa.secretsanta.checker.verifiers.HashCodeVerifier;
@@ -19,7 +20,7 @@ public class HighTechChecker implements PasswordChecker {
             case 2:
                 return new EasyReflectionVerifier().verify(password);
             case 3:
-                return true; // TODO: WIP
+                return new ByteCodeVerifier().verify(password);
             case 4:
                 return new FinalVerifier().verify(password);
             default:

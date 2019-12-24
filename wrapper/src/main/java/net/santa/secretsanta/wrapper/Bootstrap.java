@@ -87,10 +87,11 @@ public class Bootstrap {
     private static int runProcess(String command) throws Exception {
         Process pro = Runtime.getRuntime().exec(command);
 
-        //TODO: Remove debug lines
+        //TODO: Turn of debug for final version
+        boolean debugEnabled = false;
         boolean debug = Optional.ofNullable(System.getProperty("debug")).isPresent();
 
-        if (debug) {
+        if (debug && debugEnabled) {
             printLines(command + " stdout:", pro.getInputStream());
             printLines(command + " stderr:", pro.getErrorStream());
         }
