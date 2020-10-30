@@ -1,6 +1,8 @@
 # Secret Santa
 _Alternatively: Yeet42.java the game_
 
+**THIS REPO CONTAINS SPOILERS, ONLY READ ONCE YOU'VE COMPLETED IT @DANY**
+
 Let me say this upfront, I'm sorry. This _thing_ should take you about an hour, but that 
 really depends on how quick you are with figuring out what the code is doing.
 
